@@ -1,0 +1,53 @@
+<html>
+<head>
+<script lang="javascript">
+var array=new Array();
+function fun()
+{
+	var num=parseInt(document.getElementById("t1").value);
+	array.push(num);
+	document.getElementById("p1").innerHTML=array;
+}
+function binarySearch(low,high,key)
+{
+	var mid;
+	var min=arguments[0];
+	var max=arguments[1];
+	var ele=arguments[2];
+	if (min > max)
+	{
+		document.getElementById("p2").innerHTML="Not Found";
+		return;
+	}
+	mid = (min + max) / 2;
+	if (array[mid] == ele)
+	{
+		document.getElementById("p2").innerHTML="Key Found at ".concat(mid.toString());
+	}
+	else if (array[mid] > ele)
+	{
+		binarySearch(min, mid , key);
+	}
+	else if (array[mid] < key)
+	{
+		binarySearch(mid-1 ,max, key);
+	}else{
+		document.getElementById("p2").innerHTML="Not Found";
+	}
+}
+function sort()
+{
+	var n=parseInt(document.getElementById("t2").value);
+	binarySearch(0,array.length,n);
+}
+</script>
+</head>
+<body>
+<input type="text" id="t1" >
+<button onclick="fun()">Add Value</button><br/>
+<input type="text" id="t2" >
+<button onclick="sort()">Search</button>
+<p id="p1">Hello Java Script</p>
+<p id="p2"></p>
+</body>
+</html>
